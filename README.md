@@ -1,5 +1,6 @@
 # SIMPLE REST API EXAMPLE - Python - DJANGO - Django Rest Framework
-This is a sample of how make a simple rest-api with Python, Django and django-rest-framework
+This is a sample of how make a simple rest-api with Python, Django and django-rest-framework.
+
 [Django REST framework](http://www.django-rest-framework.org/) is a powerful and flexible toolkit for building Web APIs.
 
 ## Requirements
@@ -11,7 +12,6 @@ This is a sample of how make a simple rest-api with Python, Django and django-re
 ```
 	pip install django
 	pip install djangorestframework
-
 ```
 
 ## Structure
@@ -36,10 +36,11 @@ You can install httpie using pip:
 ```
 pip install httpie
 ```
-First, we have to start up Django's development server.
-```
-	python manage.py runserver
 
+First, we have to start up Django's development server.
+
+```	
+python manage.py runserver
 ```
 
 And than, we can call the endpoint and test the API from another terminal
