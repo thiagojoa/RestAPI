@@ -1,6 +1,5 @@
 # SIMPLE REST API EXAMPLE - Python - DJANGO - Django Rest Framework
-This is a sample of how make a simple rest-api with Python, Django and django-rest-framework.
-
+This is a sample of how make a simple rest-api with Python, Django and django-rest-framework
 [Django REST framework](http://www.django-rest-framework.org/) is a powerful and flexible toolkit for building Web APIs.
 
 ## Requirements
@@ -12,6 +11,7 @@ This is a sample of how make a simple rest-api with Python, Django and django-re
 ```
 	pip install django
 	pip install djangorestframework
+
 ```
 
 ## Structure
@@ -36,19 +36,21 @@ You can install httpie using pip:
 ```
 pip install httpie
 ```
-
 First, we have to start up Django's development server.
+```
+	python manage.py runserver
 
-```	
-python manage.py runserver
 ```
 
-And than, we can call the endpoint and test the API from another terminal
+Calling the below endpoints from another terminal
 
+Endpoint |HTTP Method | Result
+---------|----|-------
+`employee` | GET | Get a list of all emplyees
 ```
 	http http://127.0.0.1:8000/employee/
 ```
-we get all emplyees
+we list all employees
 
     {
         "name": "Thales G",
@@ -77,8 +79,10 @@ we get all emplyees
     }
 
 
+Endpoint |HTTP Method | Result
+---------|----|-------
+`employee/:id` | GET | Get a single employee
 
-Try a call to endpoint employee with id 4:
 ```
 	http http://127.0.0.1:8000/employee/4
 ```
@@ -90,3 +94,6 @@ we get the employee with id = 4
     "department": "Laboratório de Ciência de dados"
 }
 ```
+Endpoint |HTTP Method | Result
+---------|----|-------
+`employee`| POST | Insert a new employee
