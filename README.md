@@ -86,7 +86,7 @@ Endpoint |HTTP Method | Result
 ```
 	http http://127.0.0.1:8000/employee/4
 ```
-we get the employee with id = 4
+We get the employee with id = 4
 ```
 {
     "name": "Kleber Alves",
@@ -97,3 +97,77 @@ we get the employee with id = 4
 Endpoint |HTTP Method | Result
 ---------|----|-------
 `employee`| POST | Insert a new employee
+
+```
+http --json -v POST localhost:8000/employee/ name=John email=john@example.org department=helthcare
+```
+We can insert a new employee in our API with post method
+
+See the return below
+
+```
+HTTP/1.1 201 Created
+Allow: GET, POST, OPTIONS
+Content-Length: 67
+Content-Type: application/json
+Date: Wed, 05 Jun 2019 12:58:28 GMT
+Server: WSGIServer/0.2 CPython/3.5.3
+Vary: Accept, Cookie
+X-Frame-Options: SAMEORIGIN
+
+{
+    "department": "helthcare",
+    "email": "john@example.org",
+    "name": "John"
+}
+
+```
+Endpoint |HTTP Method | Result
+---------|----|-------
+`employee`| PUT | Update a existing employee
+
+```
+http --json -v PUT localhost:8000/employee/5 name=Carlos email=carlos@example.org department=Finance
+```
+We can update a new employee in our API with PUT method
+
+See the return below
+
+```
+HTTP/1.1 200 OK
+Allow: PUT, GET, DELETE, OPTIONS
+Content-Length: 69
+Content-Type: application/json
+Date: Wed, 05 Jun 2019 13:05:36 GMT
+Server: WSGIServer/0.2 CPython/3.5.3
+Vary: Accept, Cookie
+X-Frame-Options: SAMEORIGIN
+
+{
+    "department": "Finance",
+    "email": "carlos@example.org",
+    "name": "Carlos"
+}
+```
+
+Endpoint |HTTP Method | Result
+---------|----|-------
+`employee`| DELETE | Delete a existing employee
+
+```
+	http --json -v DELETE localhost:8000/employee/5
+```
+We can update a new employee in our API with PUT method
+
+See the return below
+
+```
+HTTP/1.1 204 No Content
+Allow: PUT, GET, DELETE, OPTIONS
+Content-Length: 0
+Date: Wed, 05 Jun 2019 13:14:47 GMT
+Server: WSGIServer/0.2 CPython/3.5.3
+Vary: Accept, Cookie
+X-Frame-Options: SAMEORIGIN
+
+```
