@@ -23,10 +23,10 @@ The resource can list, add, update and remove employees
 
 Endpoint |HTTP Method | Result
 ---------|----|-------
-`employee` | GET | Get a list of all emplyees
+`employee` | GET | Get a list of all employees
 `employee/:id` | GET | Get a single employee
 `employee`| POST | Insert a new employee
-`employee/:id` | PUT | Update a emplyee
+`employee/:id` | PUT | Update a employee
 `employee/:id` | DELETE | Delete a employee
 
 ## Using the API
@@ -46,7 +46,7 @@ Calling the below endpoints from another terminal
 
 Endpoint |HTTP Method | Result
 ---------|----|-------
-`employee` | GET | Get a list of all emplyees
+`employee` | GET | Get a list of all employees
 ```
 	http http://127.0.0.1:8000/employee/
 ```
