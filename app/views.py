@@ -2,12 +2,15 @@ from rest_framework import generics, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+from django.shortcuts import render, get_object_or_404, redirect
+
 from .models import Employee
 from projeto.serializers import EmployeeSerializer
 
+from django.views.generic import ListView, DetailView
+from .forms import EmployeeForm
 
-#from rest_framework_jsonp.renderers import JSONPRenderer
-
+#views to make the API works
 @api_view(['GET', 'POST'])
 def employee_list(request):
     """
@@ -51,11 +54,43 @@ def employee_detail(request, pk):
         employee.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-'''class EmployeeAPI(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    #renderer_classes = (JSONPRenderer,)
-    queryset = Employee.objects.all()
-    serializer_class = EmployeeSerializer
-'''
+
+#views to make the admin front works with backend
+#home view for posts. Posts are displayed in a list
+class IndexView(ListView):
+ template_name='app/index.html'
+ context_object_name = 'employee_list'
+ def get_queryset(self):
+  return Employee.objects.all()
+
+#Detail view (view employee detail)
+class EmployeeDetailView(DetailView):
+ model=Employee
+ template_name = 'app/employee-detail.html'
+
+#New post view (Create new employee)
+def employeeview(request):
+ if request.method == 'POST':
+  form = EmployeeForm(request.POST)
+  if form.is_valid():
+   form.save()
+  return redirect('index')
+ form = EmployeeForm()
+ return render(request,'app/employee.html',{'form': form})
+
+#Edit a employee
+def edit(request, pk, template_name='app/edit.html'):
+    post= get_object_or_404(Employee, pk=pk)
+    form = EmployeeForm(request.POST or None, instance=post)
+    if form.is_valid():
+        form.save()
+        return redirect('index')
+    return render(request, template_name, {'form':form})
+
+#Delete post
+def delete(request, pk, template_name='app/confirm_delete.html'):
+    post= get_object_or_404(Employee, pk=pk)
+    if request.method=='POST':
+        post.delete()
+        return redirect('index')
+    return render(request, template_name, {'object':post})

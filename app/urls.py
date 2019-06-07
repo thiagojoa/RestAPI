@@ -4,8 +4,9 @@ from app import views
 
 
 urlpatterns = [
-    #path('', include(router.urls)),
-    #url(r'^employee/$', views.EmployeeAPI.as_view(), name='get'),
-    #path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-
+    path('', views.IndexView.as_view(), name='index'),
+    path('<int:pk>/', views.EmployeeDetailView.as_view(), name='detail'),
+    path('edit/<int:pk>/', views.edit, name='edit'),
+    path('post/', views.employeeview, name='post'),
+    path('delete/<int:pk>/', views.delete, name='delete'),
 ]

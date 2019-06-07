@@ -13,6 +13,10 @@ This is a sample of how make a simple rest-api with Python, Django and django-re
 	pip install djangorestframework
 
 ```
+## Installation
+How this is a example, to make data ready to read, this application contains a SQLite database file in your environment.
+``` *db.sqlite3
+```
 
 ## Structure
 A RESTfull API's, are definide by endpoints. This structure allow end users and applications, access data from our application using the HTTP methods - GET, POST, PUT, DELETE.
@@ -149,7 +153,6 @@ X-Frame-Options: SAMEORIGIN
     "name": "Carlos"
 }
 ```
-
 Endpoint |HTTP Method | Result
 ---------|----|-------
 `employee`| DELETE | Delete a existing employee
@@ -169,5 +172,17 @@ Date: Wed, 05 Jun 2019 13:14:47 GMT
 Server: WSGIServer/0.2 CPython/3.5.3
 Vary: Accept, Cookie
 X-Frame-Options: SAMEORIGIN
+
+```
+## Administration page
+
+This application contains too a very simple administration page, when you can see your datas and manage your employees, to do CRUD operations.
+
+The index page will cal the CRUD Administration View.
+
+You can check in URL below
+
+```
+	http://localhost:8000
 
 ```

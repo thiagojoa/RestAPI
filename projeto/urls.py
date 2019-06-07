@@ -19,10 +19,14 @@ from django.urls import path
 from app import views
 
 
+from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('employee/', views.employee_list),
     path('employee/<int:pk>', views.employee_detail),
     path('admin/', admin.site.urls),
-    url(r'^', include('app.urls')),
+    path('', include('app.urls')),
+    #url('app', include('app.urls')),
 ]
